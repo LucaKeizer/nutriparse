@@ -90,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'nutriparse_db',
         'USER': 'postgres',
-        'PASSWORD': 'your_password',  # Use environment variables in production
+        'PASSWORD': 'Pinkeltje1',  # Use environment variables in production
         'HOST': 'localhost',
         'PORT': '5432',
     }

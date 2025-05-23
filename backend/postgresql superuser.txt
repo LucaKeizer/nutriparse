@@ -1,0 +1,3 @@
+username: luca
+email: keizerluca@gmail.com
+password: Pinkeltje1
