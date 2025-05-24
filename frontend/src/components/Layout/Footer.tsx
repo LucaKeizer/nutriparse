@@ -4,17 +4,13 @@ import {
   Container,
   Typography,
   Link,
-  Stack,
+  Grid,
   Divider,
-  useTheme,
-  useMediaQuery,
 } from '@mui/material';
 import { GitHub, LinkedIn, Email } from '@mui/icons-material';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Box
@@ -27,14 +23,9 @@ const Footer: React.FC = () => {
       }}
     >
       <Container maxWidth="lg">
-        <Stack
-          direction={isMobile ? 'column' : 'row'}
-          spacing={4}
-          alignItems={isMobile ? 'center' : 'flex-start'}
-          textAlign={isMobile ? 'center' : 'left'}
-        >
+        <Grid container spacing={4}>
           {/* About Section */}
-          <Box sx={{ flex: 1 }}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <Typography variant="h6" gutterBottom>
               NutriParse
             </Typography>
@@ -45,14 +36,14 @@ const Footer: React.FC = () => {
             <Typography variant="body2" color="rgba(255,255,255,0.8)">
               Built with React, Django, and spaCy
             </Typography>
-          </Box>
+          </Grid>
 
           {/* Quick Links */}
-          <Box sx={{ flex: 1 }}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <Typography variant="h6" gutterBottom>
               Quick Links
             </Typography>
-            <Stack spacing={1}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
               <Link href="/" color="inherit" underline="hover">
                 Home
               </Link>
@@ -65,16 +56,16 @@ const Footer: React.FC = () => {
               <Link href="/profile" color="inherit" underline="hover">
                 Profile
               </Link>
-            </Stack>
-          </Box>
+            </Box>
+          </Grid>
 
           {/* Contact & Social */}
-          <Box sx={{ flex: 1 }}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <Typography variant="h6" gutterBottom>
               Connect
             </Typography>
-            <Stack spacing={1}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: isMobile ? 'center' : 'flex-start' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <GitHub fontSize="small" />
                 <Link 
                   href="https://github.com/LucaKeizer/nutriparse" 
@@ -86,7 +77,7 @@ const Footer: React.FC = () => {
                   View on GitHub
                 </Link>
               </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: isMobile ? 'center' : 'flex-start' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <LinkedIn fontSize="small" />
                 <Link 
                   href="https://linkedin.com/in/your-profile" 
@@ -98,7 +89,7 @@ const Footer: React.FC = () => {
                   LinkedIn Profile
                 </Link>
               </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, justifyContent: isMobile ? 'center' : 'flex-start' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <Email fontSize="small" />
                 <Link 
                   href="mailto:your.email@example.com" 
@@ -108,19 +99,21 @@ const Footer: React.FC = () => {
                   Contact Me
                 </Link>
               </Box>
-            </Stack>
-          </Box>
-        </Stack>
+            </Box>
+          </Grid>
+        </Grid>
 
         <Divider sx={{ my: 3, backgroundColor: 'rgba(255,255,255,0.2)' }} />
 
         {/* Copyright */}
-        <Stack
-          direction={isMobile ? 'column' : 'row'}
-          justifyContent="space-between"
-          alignItems="center"
-          spacing={2}
-          textAlign="center"
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', sm: 'row' },
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: 2,
+          }}
         >
           <Typography variant="body2" color="rgba(255,255,255,0.8)">
             © {currentYear} NutriParse. All rights reserved.
@@ -128,7 +121,7 @@ const Footer: React.FC = () => {
           <Typography variant="body2" color="rgba(255,255,255,0.8)">
             Made with ❤️ using React, Django & NLP
           </Typography>
-        </Stack>
+        </Box>
       </Container>
     </Box>
   );

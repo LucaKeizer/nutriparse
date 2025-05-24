@@ -3,6 +3,7 @@ import {
   Box,
   Typography,
   Button,
+  Grid,
   Card,
   CardContent,
   Container,
@@ -107,7 +108,7 @@ const HomePage: React.FC = () => {
             Paste any recipe and instantly get detailed nutritional information 
             powered by advanced AI and Natural Language Processing
           </Typography>
-          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
             {isAuthenticated ? (
               <Button
                 component={RouterLink}
@@ -182,36 +183,36 @@ const HomePage: React.FC = () => {
         >
           Powerful Features
         </Typography>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center' }}>
+        <Grid container spacing={4}>
           {features.map((feature, index) => (
-            <Card
-              key={index}
-              sx={{
-                flex: '1 1 300px',
-                maxWidth: 360,
-                display: 'flex',
-                flexDirection: 'column',
-                transition: 'transform 0.2s, box-shadow 0.2s',
-                '&:hover': {
-                  transform: 'translateY(-4px)',
-                  boxShadow: 4,
-                },
-              }}
-            >
-              <CardContent sx={{ flexGrow: 1, p: 3 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                  {feature.icon}
-                  <Typography variant="h6" component="h3" sx={{ ml: 1, fontWeight: 'bold' }}>
-                    {feature.title}
+            <Grid size={{ xs: 12, md: 6, lg: 4 }} key={index}>
+              <Card
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  transition: 'transform 0.2s, box-shadow 0.2s',
+                  '&:hover': {
+                    transform: 'translateY(-4px)',
+                    boxShadow: 4,
+                  },
+                }}
+              >
+                <CardContent sx={{ flexGrow: 1, p: 3 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                    {feature.icon}
+                    <Typography variant="h6" component="h3" sx={{ ml: 1, fontWeight: 'bold' }}>
+                      {feature.title}
+                    </Typography>
+                  </Box>
+                  <Typography variant="body2" color="text.secondary">
+                    {feature.description}
                   </Typography>
-                </Box>
-                <Typography variant="body2" color="text.secondary">
-                  {feature.description}
-                </Typography>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </Grid>
           ))}
-        </Box>
+        </Grid>
       </Container>
 
       {/* Benefits Section */}
@@ -256,89 +257,95 @@ const HomePage: React.FC = () => {
         >
           How It Works
         </Typography>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, alignItems: 'flex-start', justifyContent: 'center' }}>
-          <Box sx={{ flex: '1 1 250px', textAlign: 'center', p: 3, maxWidth: 300 }}>
-            <Box
-              sx={{
-                width: 80,
-                height: 80,
-                borderRadius: '50%',
-                backgroundColor: 'primary.main',
-                color: 'white',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                mx: 'auto',
-                mb: 2,
-                fontSize: '2rem',
-                fontWeight: 'bold',
-              }}
-            >
-              1
+        <Grid container spacing={4} alignItems="center">
+          <Grid size={{ xs: 12, md: 4 }}>
+            <Box sx={{ textAlign: 'center', p: 3 }}>
+              <Box
+                sx={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: '50%',
+                  backgroundColor: 'primary.main',
+                  color: 'white',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  mx: 'auto',
+                  mb: 2,
+                  fontSize: '2rem',
+                  fontWeight: 'bold',
+                }}
+              >
+                1
+              </Box>
+              <Typography variant="h6" gutterBottom fontWeight="bold">
+                Paste Your Recipe
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Copy and paste any recipe text from websites, books, or notes. 
+                Our AI handles various formats automatically.
+              </Typography>
             </Box>
-            <Typography variant="h6" gutterBottom fontWeight="bold">
-              Paste Your Recipe
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Copy and paste any recipe text from websites, books, or notes. 
-              Our AI handles various formats automatically.
-            </Typography>
-          </Box>
-          <Box sx={{ flex: '1 1 250px', textAlign: 'center', p: 3, maxWidth: 300 }}>
-            <Box
-              sx={{
-                width: 80,
-                height: 80,
-                borderRadius: '50%',
-                backgroundColor: 'secondary.main',
-                color: 'white',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                mx: 'auto',
-                mb: 2,
-                fontSize: '2rem',
-                fontWeight: 'bold',
-              }}
-            >
-              2
+          </Grid>
+          <Grid size={{ xs: 12, md: 4 }}>
+            <Box sx={{ textAlign: 'center', p: 3 }}>
+              <Box
+                sx={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: '50%',
+                  backgroundColor: 'secondary.main',
+                  color: 'white',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  mx: 'auto',
+                  mb: 2,
+                  fontSize: '2rem',
+                  fontWeight: 'bold',
+                }}
+              >
+                2
+              </Box>
+              <Typography variant="h6" gutterBottom fontWeight="bold">
+                AI Processes & Extracts
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Advanced NLP algorithms parse ingredients, quantities, and units 
+                while matching them to our nutrition database.
+              </Typography>
             </Box>
-            <Typography variant="h6" gutterBottom fontWeight="bold">
-              AI Processes & Extracts
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Advanced NLP algorithms parse ingredients, quantities, and units 
-              while matching them to our nutrition database.
-            </Typography>
-          </Box>
-          <Box sx={{ flex: '1 1 250px', textAlign: 'center', p: 3, maxWidth: 300 }}>
-            <Box
-              sx={{
-                width: 80,
-                height: 80,
-                borderRadius: '50%',
-                backgroundColor: 'success.main',
-                color: 'white',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                mx: 'auto',
-                mb: 2,
-                fontSize: '2rem',
-                fontWeight: 'bold',
-              }}
-            >
-              3
+          </Grid>
+          <Grid size={{ xs: 12, md: 4 }}>
+            <Box sx={{ textAlign: 'center', p: 3 }}>
+              <Box
+                sx={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: '50%',
+                  backgroundColor: 'success.main',
+                  color: 'white',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  mx: 'auto',
+                  mb: 2,
+                  fontSize: '2rem',
+                  fontWeight: 'bold',
+                }}
+              >
+                3
+              </Box>
+              <Typography variant="h6" gutterBottom fontWeight="bold">
+                Get Nutrition Insights
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                View comprehensive nutritional information, save your recipes, 
+                and track your dietary goals effortlessly.
+              </Typography>
             </Box>
-            <Typography variant="h6" gutterBottom fontWeight="bold">
-              Get Nutrition Insights
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              View comprehensive nutritional information, save your recipes, 
-              and track your dietary goals effortlessly.
-            </Typography>
-          </Box>
-        </Box>
+          </Grid>
+        </Grid>
       </Container>
 
       {/* CTA Section */}
